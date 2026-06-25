@@ -1,0 +1,206 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Alyamama", system-ui, -apple-system, sans-serif;
+  --font-display: "Alyamama", system-ui, -apple-system, sans-serif;
+}
+
+html {
+  font-size: 110% !important;
+}
+
+*:not(#statement-slider-next-arrow):not(#statement-slider-prev-arrow):not(.fact-check-badge), ::-webkit-scrollbar-thumb {
+  border-radius: 0px !important;
+}
+
+#statement-slider-next-arrow, #statement-slider-prev-arrow {
+  border-radius: 50% !important;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: #f4f7f9;
+  color: #1e293b;
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-display);
+}
+
+/* Navbar font */
+header,
+#main-header,
+#main-header * {
+  font-family: "Alexandria", system-ui, -apple-system, sans-serif !important;
+}
+
+/* Custom animations and visual accents */
+.dotted-line {
+  background-image: radial-gradient(#db2777 25%, transparent 25%);
+  background-position: 0 50%;
+  background-size: 8px 8px;
+  background-repeat: repeat-x;
+  height: 4px;
+}
+
+.dotted-line-gray {
+  background-image: radial-gradient(#cbd5e1 25%, transparent 25%);
+  background-position: 0 50%;
+  background-size: 6px 6px;
+  background-repeat: repeat-x;
+  height: 4px;
+}
+
+/* Scrollbar customization */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Navigation Link Modern Underline Animation */
+.nav-link {
+  position: relative;
+  transition: color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2.5px;
+  background-color: #db2777;
+  /* Tailwind pink-600 */
+  border-radius: 9999px;
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-link:hover::after {
+  transform: scaleX(1);
+}
+
+.nav-link-active::after {
+  transform: scaleX(1) !important;
+}
+
+/* ─── FactCheckBadgeRow ─── */
+
+.fact-check-badge-row {
+  display: inline-flex;
+  align-items: center;
+  font-family: "Alexandria", system-ui, sans-serif;
+}
+
+.fact-check-badge-row--sm .fact-check-badge {
+  font-size: 11px;
+  padding: 4px 10px 5px;
+  line-height: 1.2;
+}
+
+.fact-check-badge-row--md .fact-check-badge {
+  font-size: 13px;
+  padding: 6px 10px 7px;
+  line-height: 1.2;
+}
+
+.fact-check-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid;
+  font-weight: 400;
+  white-space: nowrap;
+  background-color: transparent;
+  position: relative;
+  z-index: 1;
+  box-sizing: border-box;
+  text-align: right;
+}
+
+.fact-check-badge-row .fact-check-badge--category {
+  color: #3C4049;
+  border-color: #565A63;
+  border-width: 1.5px;
+  background-color: rgba(33, 37, 47, 0.1) !important;
+  border-radius: 0 5px 5px 0 !important;
+}
+
+.fact-check-badge-row .fact-check-badge--verdict {
+  color: #EC0EC0;
+  border-color: #EC0EC0;
+  border-width: 1.5px;
+  background-color: rgba(175, 0, 142, 0.1) !important;
+  border-radius: 5px 0 0 5px !important;
+}
+
+.fact-check-badge-row--md .fact-check-badge--category {
+  border-radius: 0 5px 5px 0 !important;
+}
+
+.fact-check-badge-row--md .fact-check-badge--verdict {
+  border-radius: 5px 0 0 5px !important;
+}
+
+.fact-check-badge-connector {
+  display: block;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 2;
+  margin: 0 -4px;
+}
+
+.fact-check-badge-row--sm .fact-check-badge-connector {
+  width: 36px;
+  height: 10px;
+}
+
+.fact-check-badge-row--md .fact-check-badge-connector {
+  width: 44px;
+  height: 12px;
+}
+
+/* Footer Section Custom Typography */
+#platform-footer,
+#platform-footer a,
+#platform-footer span {
+  font-family: "Alexandria", system-ui, -apple-system, sans-serif !important;
+  font-weight: 400 !important;
+  font-style: normal !important;
+  font-size: 13px !important;
+  leading-trim: cap-height;
+  line-height: 140% !important;
+  letter-spacing: 0% !important;
+}
+
+#footer-copyright {
+  font-family: "Alexandria", system-ui, -apple-system, sans-serif !important;
+  font-weight: 300 !important;
+  font-style: normal !important;
+  font-size: 12px !important;
+  leading-trim: cap-height;
+  line-height: 140% !important;
+  letter-spacing: 0% !important;
+}

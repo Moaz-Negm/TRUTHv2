@@ -1,0 +1,6 @@
+{
+  "name": "صحيح مصر - Saheeh Masr",
+  "description": "المنصة المصرية الأولى لتصحيح الأخبار والتحقق من المعلومات والتصريحات. Saheeh Masr is Egypt's leading fact-checking platform verifying news and public claims.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
