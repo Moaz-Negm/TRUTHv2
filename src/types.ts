@@ -222,5 +222,5 @@ export const INITIAL_METRICS: FactCheckMetric[] = [
   { label: 'أخبار كاذبة مضللة وزائفة', count: 182, color: 'bg-rose-500', percentage: 46 },
   { label: 'تصريحات غير دقيقة أو مبهمة', count: 114, color: 'bg-pink-500', percentage: 29 },
   { label: 'تصريحات حقيقية وصحيحة', count: 62, countLabel: 'صحيح', color: 'bg-emerald-500', percentage: 16 } as any,
-  { label: 'تقارير وتحقيقات تفصيلية', count: 38, color: 'bg-blue-500', percentage: 9 }
+  { label: 'تقارير وتحقيقات تفصيلية', count: 38, color: 'bg-[#155EE7]', percentage: 9 }
 ];

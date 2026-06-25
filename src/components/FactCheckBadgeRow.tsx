@@ -35,17 +35,17 @@ function BadgeConnector({ size }: { size: 'sm' | 'md' }) {
   return (
     <svg
       className="fact-check-badge-connector"
-      viewBox="0 0 36 10"
+      viewBox="0 0 33 5"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       aria-hidden="true"
     >
-      <circle cx="5" cy="5" r="3.5" fill={PINK} />
-      <rect x="11.5" y="3.75" width="2" height="2" fill={PINK} />
-      <rect x="15.5" y="3.75" width="2" height="2" fill={PINK} />
-      <rect x="19.5" y="3.75" width="2" height="2" fill={PINK} />
-      <rect x="23.5" y="3.75" width="2" height="2" fill={PINK} />
-      <circle cx="31" cy="5" r="3.5" fill={PINK} />
+      <circle cx="2.5" cy="2.5" r="2.5" fill={PINK} />
+      <rect x="8" y="1.5" width="2" height="2" fill={PINK} />
+      <rect x="13" y="1.5" width="2" height="2" fill={PINK} />
+      <rect x="18" y="1.5" width="2" height="2" fill={PINK} />
+      <rect x="23" y="1.5" width="2" height="2" fill={PINK} />
+      <circle cx="30.5" cy="2.5" r="2.5" fill={PINK} />
     </svg>
   );
 }
@@ -55,13 +55,18 @@ export default function FactCheckBadgeRow({
   verdictLabel,
   size = 'sm',
 }: FactCheckBadgeRowProps) {
-  const sizeClass = size === 'md' ? 'fact-check-badge-row--md' : 'fact-check-badge-row--sm';
+  const sizeClass = 'fact-check-badge-row--sm';
 
+  const isWideVerdict = verdictLabel === 'غير دقيق' || verdictLabel === 'غير موضح';
+  const verdictClass = isWideVerdict
+    ? 'fact-check-badge--verdict fact-check-badge--verdict-wide'
+    : 'fact-check-badge--verdict';
+ 
   return (
     <div className={`fact-check-badge-row ${sizeClass}`} dir="rtl">
       <span className="fact-check-badge fact-check-badge--category">{categoryLabel}</span>
-      <BadgeConnector size={size} />
-      <span className="fact-check-badge fact-check-badge--verdict">{verdictLabel}</span>
+      <BadgeConnector size="sm" />
+      <span className={`fact-check-badge ${verdictClass}`}>{verdictLabel}</span>
     </div>
   );
 }

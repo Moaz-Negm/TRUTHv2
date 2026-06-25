@@ -93,7 +93,7 @@ export default function ArticleModal({ article, onClose }: ArticleModalProps) {
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-xs animate-fadeIn overflow-y-auto" id="article-details-modal" dir="rtl">
 
       {/* Container Box */}
-      <div className="relative w-full max-w-3xl bg-white rounded-3xl shadow-2xl overflow-hidden my-8 max-h-[90vh] flex flex-col animate-scaleUp">
+      <div className="relative w-full max-w-3xl bg-[#f4f7f9] rounded-3xl shadow-2xl overflow-hidden my-8 max-h-[90vh] flex flex-col animate-scaleUp">
 
         {/* Sticky Modal Header */}
         <div className="flex items-center justify-between px-6 py-4 border-b border-slate-100 bg-slate-50">

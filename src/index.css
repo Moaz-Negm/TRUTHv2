@@ -95,10 +95,15 @@ header,
   border-radius: 9999px;
   transform: scaleX(0);
   transform-origin: center;
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-link:hover {
+  color: #155EE7 !important;
 }
 
 .nav-link:hover::after {
+  background-color: #155EE7 !important;
   transform: scaleX(1);
 }
 
@@ -115,15 +120,36 @@ header,
 }
 
 .fact-check-badge-row--sm .fact-check-badge {
-  font-size: 11px;
-  padding: 4px 10px 5px;
-  line-height: 1.2;
+  font-family: 'Alexandria', system-ui, sans-serif;
+  font-size: 13px;
+  line-height: 140%;
+  height: 31px;
+  padding: 0 10px;
+  leading-trim: both;
+  text-edge: cap;
+  text-align: right;
+}
+
+.fact-check-badge-row--sm .fact-check-badge--category {
+  min-width: 38px;
+  width: auto;
+}
+
+.fact-check-badge-row--sm .fact-check-badge--verdict {
+  width: 58px;
+}
+
+.fact-check-badge-row--sm .fact-check-badge--verdict-wide {
+  width: 72px;
 }
 
 .fact-check-badge-row--md .fact-check-badge {
+  font-family: "Alexandria", system-ui, sans-serif;
+  font-weight: 400;
   font-size: 13px;
   padding: 6px 10px 7px;
-  line-height: 1.2;
+  line-height: 140%;
+  text-align: right;
 }
 
 .fact-check-badge {
@@ -143,7 +169,7 @@ header,
 .fact-check-badge-row .fact-check-badge--category {
   color: #3C4049;
   border-color: #565A63;
-  border-width: 1.5px;
+  border-width: 1px;
   background-color: rgba(33, 37, 47, 0.1) !important;
   border-radius: 0 5px 5px 0 !important;
 }
@@ -151,7 +177,7 @@ header,
 .fact-check-badge-row .fact-check-badge--verdict {
   color: #EC0EC0;
   border-color: #EC0EC0;
-  border-width: 1.5px;
+  border-width: 1px;
   background-color: rgba(175, 0, 142, 0.1) !important;
   border-radius: 5px 0 0 5px !important;
 }
@@ -173,8 +199,9 @@ header,
 }
 
 .fact-check-badge-row--sm .fact-check-badge-connector {
-  width: 36px;
-  height: 10px;
+  width: 33px;
+  height: 5px;
+  margin: 0 -3px;
 }
 
 .fact-check-badge-row--md .fact-check-badge-connector {
@@ -203,4 +230,109 @@ header,
   leading-trim: cap-height;
   line-height: 140% !important;
   letter-spacing: 0% !important;
+}
+
+/* ─── Custom Dashed Borders (1px dash, 4px gap) ─── */
+.border-dotted {
+  border-style: none !important;
+  position: relative;
+}
+
+/* Horizontal dashed borders */
+.border-t.border-dotted::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background-image: linear-gradient(to right, #155EE7 20%, rgba(255, 255, 255, 0) 0%);
+  background-size: 5px 1px;
+  background-repeat: repeat-x;
+  pointer-events: none;
+}
+
+.border-b.border-dotted::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background-image: linear-gradient(to right, #155EE7 20%, rgba(255, 255, 255, 0) 0%);
+  background-size: 5px 1px;
+  background-repeat: repeat-x;
+  pointer-events: none;
+}
+
+/* Vertical dashed borders */
+.border-l.border-dotted::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 1px;
+  background-image: linear-gradient(to bottom, #155EE7 20%, rgba(255, 255, 255, 0) 0%);
+  background-size: 1px 5px;
+  background-repeat: repeat-y;
+  pointer-events: none;
+}
+
+@media (min-width: 768px) {
+  .md\:border-dotted {
+    border-style: none !important;
+    position: relative;
+  }
+  .md\:border-l.md\:border-dotted::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 1px;
+    background-image: linear-gradient(to bottom, #155EE7 20%, rgba(255, 255, 255, 0) 0%);
+    background-size: 1px 5px;
+    background-repeat: repeat-y;
+    pointer-events: none;
+  }
+  .md\:border-b.md\:border-dotted::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, #155EE7 20%, rgba(255, 255, 255, 0) 0%);
+    background-size: 5px 1px;
+    background-repeat: repeat-x;
+    pointer-events: none;
+  }
+  .md\:border-b-0::after,
+  .md\:border-l-0::after {
+    display: none !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  .lg\:border-dotted {
+    border-style: none !important;
+    position: relative;
+  }
+  .lg\:border-l.lg\:border-dotted::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 1px;
+    background-image: linear-gradient(to bottom, #155EE7 20%, rgba(255, 255, 255, 0) 0%);
+    background-size: 1px 5px;
+    background-repeat: repeat-y;
+    pointer-events: none;
+  }
+  .lg\:border-b-0::after,
+  .lg\:border-l-0::after {
+    display: none !important;
+  }
 }

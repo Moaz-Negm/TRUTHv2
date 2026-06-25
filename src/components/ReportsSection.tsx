@@ -14,7 +14,7 @@ export default function ReportsSection({ onArticleClick }: ReportsSectionProps) 
     {
       id: 'rp_1',
       category: 'مرأة',
-      categoryColor: 'text-[#d63884]',
+      categoryColor: 'text-[#155EE7]',
       title: 'لماذا تفضل النساء الوظائف الإدارية عن التدريس في المدارس؟',
       snippet: 'رغم تفوق السيدات في أعداد العاملين داخل وظائف التربية والتعليم، تظل رواتبهن الأقل مقارنة بالذكور في المدارس الخاصة والحكومية بالمحافظات.',
       imageUrl: '/images-sec-3/rea.jpg',
@@ -33,8 +33,21 @@ export default function ReportsSection({ onArticleClick }: ReportsSectionProps) 
     <section className="mb-12" id="reports-section" dir="rtl">
       {/* Target heading with solid accent bar */}
       <div className="flex items-center gap-2 mb-6 pb-4 border-b border-blue-100">
-        <span className="w-3.5 h-3.5 bg-[#1d4ed8] rounded-[3px]" id="title-accent-reports"></span>
-        <h2 className="text-xl font-semibold text-slate-950 font-display">تقارير</h2>
+        <span className="w-3.5 h-3.5 bg-[#155EE7] rounded-[3px]" id="title-accent-reports"></span>
+        <h2 
+          style={{ 
+            fontFamily: 'Alexandria', 
+            fontWeight: 500, 
+            fontStyle: 'Medium', 
+            fontSize: '18px', 
+            lineHeight: '160%', 
+            letterSpacing: '0%', 
+            textAlign: 'right', 
+            color: '#0f172a',
+            width: '43px',
+            height: '29px'
+          }}
+        >تقارير</h2>
       </div>
 
       {/* Grid of exactly two articles with vertical dotted line separator */}
@@ -66,10 +79,30 @@ export default function ReportsSection({ onArticleClick }: ReportsSectionProps) 
               <span className={`block font-['Alexandria'] font-normal text-[14px] leading-[1.4] ${report.categoryColor} mb-2`}>
                 {report.category}
               </span>
-              <h3 className="text-base font-semibold text-slate-900 mb-2 leading-snug">
+              <h3 
+                style={{
+                  fontFamily: 'Alyamama',
+                  fontWeight: 500,
+                  fontSize: '22px',
+                  lineHeight: '130%',
+                  letterSpacing: '0%',
+                  textAlign: 'right'
+                }}
+                className="text-slate-900 mb-2"
+              >
                 {report.title}
               </h3>
-              <p className="text-xs text-slate-500 leading-relaxed line-clamp-3">
+              <p 
+                style={{
+                  fontFamily: 'Alexandria',
+                  fontWeight: 400,
+                  fontSize: '14px',
+                  lineHeight: '140%',
+                  letterSpacing: '0%',
+                  textAlign: 'right'
+                }}
+                className="text-slate-500 line-clamp-3"
+              >
                 {report.snippet}
               </p>
             </div>

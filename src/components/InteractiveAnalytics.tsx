@@ -30,7 +30,7 @@ export default function InteractiveAnalytics({ userSubmissions, onUpvoteSubmissi
   const categoriesStats = [
     { name: 'السلع الاستهلاكية والتموين', count: 48, percentage: 38, color: 'bg-rose-500' },
     { name: 'التعليم والمدارس', count: 35, percentage: 27, color: 'bg-amber-500' },
-    { name: 'الاستثمار والقروض القومية', count: 24, percentage: 19, color: 'bg-blue-500' },
+    { name: 'الاستثمار والقروض القومية', count: 24, percentage: 19, color: 'bg-[#155EE7]' },
     { name: 'السياحة والآثار التراثية', count: 21, percentage: 16, color: 'bg-pink-500' }
   ];
 

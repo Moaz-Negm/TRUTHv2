@@ -65,7 +65,7 @@ export default function FakeNewsSection({ onArticleClick }: FakeNewsSectionProps
     <section className="mb-12" id="fakenews-section" dir="rtl">
       {/* Accent title for Fake News */}
       <div className="flex items-center gap-2 mb-6 pb-4 border-b border-blue-100">
-        <span className="w-3.5 h-3.5 bg-[#1d4ed8] rounded-[3px]" id="title-accent-fakenews"></span>
+        <span className="w-3.5 h-3.5 bg-[#155EE7] rounded-[3px]" id="title-accent-fakenews"></span>
         <h2 
           style={{ 
             fontFamily: 'Alexandria', 
@@ -82,13 +82,14 @@ export default function FakeNewsSection({ onArticleClick }: FakeNewsSectionProps
 
       {/* Grid structure: 2 Columns, 2 Rows with dotted dividers */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-y-6 md:gap-y-0 md:gap-x-0">
-        {fakeNews.map((news, index) => (
-          <div
-            key={news.id}
-            onClick={() => onArticleClick(news.title, 'أخبار كاذبة', news.snippet, news.imageUrl)}
-            className={`group flex flex-row gap-4 cursor-pointer items-start justify-between relative ${getGridClasses(index)}`}
-            id={`fakenews-item-${news.id}`}
-          >
+        {fakeNews.map((news, index) => {
+          // onClick is commented out here so clicking news items does nothing (no popup)
+          return (
+            <div
+              key={news.id}
+              className={`group flex flex-row gap-4 cursor-default items-start justify-between relative ${getGridClasses(index)}`}
+              id={`fakenews-item-${news.id}`}
+            >
 
             {/* Right Box in RTL: Thumbnail Image with sharp corners (rounded-none) */}
             <div className="w-36 h-24 sm:w-44 sm:h-32 shrink-0 rounded-none overflow-hidden bg-slate-100 shadow-3xs">
@@ -108,10 +109,30 @@ export default function FakeNewsSection({ onArticleClick }: FakeNewsSectionProps
                 <FactCheckBadgeRow categoryLabel={news.badgeLeft} verdictLabel={news.badgeRight} size="sm" />
               </div>
 
-              <h3 className="text-base font-semibold text-slate-900 mb-2 leading-snug group-active:text-[#155EE7] transition-colors">
+              <h3 
+                style={{
+                  fontFamily: 'Alyamama',
+                  fontWeight: 500,
+                  fontSize: '22px',
+                  lineHeight: '130%',
+                  letterSpacing: '0%',
+                  textAlign: 'right'
+                }}
+                className="text-slate-900 mb-2 group-active:text-[#155EE7] transition-colors"
+              >
                 {news.title}
               </h3>
-              <p className="text-xs text-slate-500 leading-relaxed line-clamp-3">
+              <p 
+                style={{
+                  fontFamily: 'Alexandria',
+                  fontWeight: 400,
+                  fontSize: '14px',
+                  lineHeight: '140%',
+                  letterSpacing: '0%',
+                  textAlign: 'right'
+                }}
+                className="text-slate-500 line-clamp-3"
+              >
                 {news.snippet}
               </p>
             </div>
@@ -124,8 +145,9 @@ export default function FakeNewsSection({ onArticleClick }: FakeNewsSectionProps
               <div className="hidden md:block absolute left-0 top-3 bottom-0 border-l border-dotted border-blue-200" id="fakenews-vertical-divider-bottom"></div>
             )}
 
-          </div>
-        ))}
+            </div>
+          );
+        })}
       </div>
 
     </section>

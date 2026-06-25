@@ -27,7 +27,7 @@ export default function HeroGrid({ articles, onArticleClick }: HeroGridProps) {
       {/* RIGHT COLUMN (Featured Article): Occupies 7 cols on desktop (approx 60% split) */}
       <div
         onClick={() => onArticleClick(mainFeatured)}
-        className="lg:col-span-7 min-w-0 flex flex-col group cursor-pointer border border-slate-100 bg-white rounded-2xl overflow-hidden shadow-xs p-5"
+        className="lg:col-span-7 min-w-0 flex flex-col group cursor-pointer border border-slate-100 bg-[#f4f7f9] rounded-2xl overflow-hidden shadow-xs p-5"
         id="right-column-featured"
       >
         {/* Large high-impact header Image */}
@@ -71,8 +71,15 @@ export default function HeroGrid({ articles, onArticleClick }: HeroGridProps) {
           return (
             <div key={article.id} className="w-full">
               <div
-                onClick={() => onArticleClick(article)}
-                className="group flex flex-row gap-4 items-start cursor-pointer p-1 justify-between w-full"
+                onClick={() => {
+                  if (isJapan) {
+                    // Commented out to prevent popup on news item
+                    // onArticleClick(article);
+                  } else {
+                    onArticleClick(article);
+                  }
+                }}
+                className={`group flex flex-row gap-4 items-start p-1 justify-between w-full ${isJapan ? 'cursor-default' : 'cursor-pointer'}`}
                 id={`lead-item-${article.id}`}
               >
 
@@ -94,7 +101,7 @@ export default function HeroGrid({ articles, onArticleClick }: HeroGridProps) {
                     {isJapan ? (
                       <FactCheckBadgeRow categoryLabel="خبر" verdictLabel="مضلل" size="sm" />
                     ) : isEsca ? (
-                      <span className="text-[#d63884] font-['Alexandria'] font-normal text-[14px] leading-[1.4]">
+                      <span className="text-[#155EE7] font-['Alexandria'] font-normal text-[14px] leading-[1.4]">
                         مرأة
                       </span>
                     ) : (

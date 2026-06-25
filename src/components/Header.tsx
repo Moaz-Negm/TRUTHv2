@@ -79,20 +79,25 @@ export default function Header({
 
             {/* Search: icon only, expands on click — appears on RIGHT in RTL (closer to center) */}
             {searchOpen ? (
-              <div className="flex items-center gap-1 border border-slate-200 rounded px-2 py-1 bg-white">
-                <button onClick={handleClearSearch} className="text-slate-400 cursor-pointer" id="btn-close-search">
-                  <X className="w-3.5 h-3.5" />
-                </button>
+              <div className="relative flex items-center w-[212px] h-[43px] border-b border-[#6F9CF1] py-2 gap-[10px] bg-transparent">
                 <input
                   ref={inputRef}
                   type="text"
                   value={searchValue}
                   onChange={handleSearchChange}
-                  placeholder="ابحث..."
-                  className="w-36 sm:w-44 text-xs text-slate-800 focus:outline-none text-right bg-transparent"
+                  placeholder="اكتب اسم الشخص هنا..."
+                  className="bg-transparent border-none text-[12px] font-normal font-['Alexandria'] text-[#155EE7] placeholder-[#155EE7] text-right w-full h-full focus:outline-none pr-8 pl-6"
                   id="search-input-field"
                 />
-                <Search className="w-3.5 h-3.5 text-slate-400 shrink-0" />
+                <Search className="absolute right-1 top-1/2 -translate-y-1/2 w-[19px] h-[19px] text-[#155EE7]" />
+                <button
+                  onClick={handleClearSearch}
+                  className="absolute left-1 top-1/2 -translate-y-1/2 text-slate-400 hover:text-[#155EE7] cursor-pointer transition-colors p-1"
+                  id="btn-close-search"
+                  title="إغلاق البحث"
+                >
+                  <X className="w-4 h-4" />
+                </button>
               </div>
             ) : (
               <button
@@ -107,7 +112,7 @@ export default function Header({
             {/* Blue button — appears on far LEFT in RTL */}
             <button
               onClick={onSubmitClaimClick}
-              className="px-4 py-1.5 rounded bg-[#1d4ed8] text-white font-['Alexandria'] font-normal text-[12px] leading-[1.5] cursor-pointer whitespace-nowrap"
+              className="px-4 py-1.5 rounded bg-[#155EE7] text-white font-['Alexandria'] font-normal text-[12px] leading-[1.5] cursor-pointer whitespace-nowrap"
               id="btn-submit-claim"
             >
               أرسل ادعاء للتصحيح
@@ -122,7 +127,7 @@ export default function Header({
       </div>
 
       {/* LINE 2 + LINE 3: borders on nav row */}
-      <nav className={`border-t border-b ${borderColor} py-2 bg-white`} id="desktop-navigation">
+      <nav className={`border-t border-b ${borderColor} py-2 bg-[#F5F9FF]`} id="desktop-navigation">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-center items-center gap-8 md:gap-10">
             {categories.map((cat) => {

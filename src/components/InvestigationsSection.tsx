@@ -14,7 +14,7 @@ export default function InvestigationsSection({ onArticleClick }: Investigations
     <section className="mb-12 bg-[#f4f8fc] p-6 sm:p-8 lg:p-10" id="investigations-section" dir="rtl">
       {/* Accent Title row */}
       <div className="flex items-center gap-2 mb-8 pb-4">
-        <span className="w-3.5 h-3.5 bg-[#1d4ed8]" style={{ borderRadius: 0 }} id="title-accent-investigations"></span>
+        <span className="w-3.5 h-3.5 bg-[#155EE7]" style={{ borderRadius: 0 }} id="title-accent-investigations"></span>
         <h2 
           style={{ 
             fontFamily: 'Alexandria', 

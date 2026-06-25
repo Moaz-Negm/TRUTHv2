@@ -129,7 +129,7 @@ export default function StatementsSection({ onArticleClick }: StatementsSectionP
 
         {/* Title on the far right (RTL flow) */}
         <div className="flex items-center gap-2 select-none">
-          <span className="w-3.5 h-3.5 bg-[#1d4ed8] rounded-[3px]" id="title-accent-statements"></span>
+          <span className="w-3.5 h-3.5 bg-[#155EE7] rounded-[3px]" id="title-accent-statements"></span>
           <h2 
             style={{ 
               fontFamily: 'Alexandria', 
@@ -157,7 +157,7 @@ export default function StatementsSection({ onArticleClick }: StatementsSectionP
                 setPersonSearch(e.target.value);
                 setStartIndex(0);
               }}
-              className="bg-transparent border-none text-[12px] font-normal font-['Alexandria'] text-[#155EE7] placeholder-[#155EE7]/70 text-right w-full h-full focus:outline-none pr-8 pl-1"
+              className="bg-transparent border-none text-[12px] font-normal font-['Alexandria'] text-[#155EE7] placeholder-[#155EE7] text-right w-full h-full focus:outline-none pr-8 pl-1"
               id="statements-person-search"
             />
             <Search className="absolute right-1 top-1/2 -translate-y-1/2 w-[19px] h-[19px] text-[#155EE7]" />
@@ -238,110 +238,126 @@ export default function StatementsSection({ onArticleClick }: StatementsSectionP
         )}
 
         {/* Overflow hidden sliding stage — bordered container */}
-        <div className="overflow-hidden w-full border border-[#155EE7] relative">
+        <div 
+          className="w-full border border-[#155EE7] relative md:max-w-[1440px] mx-auto"
+          style={{
+            paddingTop: '40px',
+            paddingRight: '60px',
+            paddingBottom: '32px',
+            paddingLeft: '60px',
+          }}
+        >
+          {/* Inner overflow-hidden container to clip cards exactly at the padding edge */}
+          <div className="overflow-hidden w-full relative">
 
-          {/* Left-side Gradient Fade Overlay to show scrollability (desktop only) */}
-          <div className="hidden md:block absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-[#f4f7f9] to-transparent pointer-events-none z-10"></div>
+            {/* Left-side Gradient Fade Overlay to show scrollability (desktop only) */}
+            <div className="hidden md:block absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-[#f4f7f9] to-transparent pointer-events-none z-10"></div>
 
-          <div
-            className="flex transition-transform duration-500 ease-in-out gap-0 w-full items-start"
-            style={{ transform: `translateX(${startIndex * (isMobile ? 100 : 44)}%)` }}
-          >
-            {filteredStatements.map((stmt) => (
-              <div
-                key={stmt.id}
-                className="w-full md:w-[44%] shrink-0 px-2.5 flex flex-col"
-                id={`statement-wrapper-${stmt.id}`}
-              >
+            <div
+              className="flex transition-transform duration-500 ease-in-out gap-0 md:gap-[18px] w-full items-start"
+              style={{
+                transform: isMobile
+                  ? `translateX(${startIndex * 100}%)`
+                  : `translateX(${startIndex * 424}px)`
+              }}
+            >
+              {filteredStatements.map((stmt) => (
                 <div
-                  onClick={() => handleCardClick(stmt.quote, stmt.author, stmt.description, stmt.verdict, stmt.avatar)}
-                  className="relative bg-white rounded-2xl p-6 sm:p-8 cursor-pointer shadow-2xs flex flex-col justify-start select-none"
-                  dir="rtl"
-                  id={`statement-card-${stmt.id}`}
+                  key={stmt.id}
+                  className="w-full md:w-[406px] shrink-0 px-2.5 md:px-0 flex flex-col"
+                  id={`statement-wrapper-${stmt.id}`}
                 >
-                  {/* Speaker Avatar - Pinned to the top-right corner */}
-                  <div className="absolute top-6 right-6 sm:top-8 sm:right-8 w-[56px] h-[68px] sm:w-[72px] sm:h-[86px] rounded-md overflow-hidden shrink-0 bg-slate-50">
-                    <img
-                      src={stmt.avatar}
-                      alt={stmt.author}
-                      referrerPolicy="no-referrer"
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
+                  <div
+                    onClick={() => handleCardClick(stmt.quote, stmt.author, stmt.description, stmt.verdict, stmt.avatar)}
+                    className="relative bg-[#f4f7f9] rounded-2xl p-6 md:p-[24px] md:w-[406px] md:h-[287px] box-border cursor-pointer shadow-2xs flex flex-col justify-start select-none"
+                    dir="rtl"
+                    id={`statement-card-${stmt.id}`}
+                  >
+                    {/* Speaker Avatar - Pinned to the top-right corner */}
+                    <div className="absolute top-6 right-6 md:top-[24px] md:right-[24px] w-[56px] h-[68px] sm:w-[72px] sm:h-[86px] rounded-md overflow-hidden shrink-0 bg-slate-50">
+                      <img
+                        src={stmt.avatar}
+                        alt={stmt.author}
+                        referrerPolicy="no-referrer"
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
 
-                  {/* Left Column Container: Date, Badge, Quote, Author, Description (with right-padding to clear the absolute-positioned avatar) */}
-                  <div className="pr-[72px] sm:pr-[88px] flex flex-col justify-start">
-                    {/* Top Row: Date on the far left, Badge on the right next to the avatar */}
-                    <div className="flex items-center justify-between w-full mb-4">
-                      {/* Badge (Right under RTL) */}
-                      <FactCheckBadgeRow categoryLabel="تصريح" verdictLabel={stmt.verdict} size="md" />
+                    {/* Left Column Container: Date, Badge, Quote (with right-padding to clear the absolute-positioned avatar) */}
+                    <div className="pr-[72px] sm:pr-[88px] flex flex-col justify-start">
+                      {/* Top Row: Date on the far left, Badge on the right next to the avatar */}
+                      <div className="flex items-center justify-between w-full mb-3">
+                        {/* Badge (Right under RTL) */}
+                        <FactCheckBadgeRow categoryLabel="تصريح" verdictLabel={stmt.verdict} size="md" />
+ 
+                        {/* Date (Left under RTL) */}
+                        <div
+                          style={{
+                            fontFamily: 'Alexandria',
+                            fontWeight: 400,
+                            fontStyle: 'normal',
+                            fontSize: '12px',
+                            lineHeight: '150%',
+                            letterSpacing: '0%',
+                            textAlign: 'right'
+                          }}
+                          className="text-slate-400 shrink-0"
+                        >
+                          {stmt.date}
+                        </div>
+                      </div>
+ 
+                      {/* Bold Quote right-aligned */}
+                      {(() => {
+                        const cleanQuote = stmt.quote.replace(/[“""”]/g, '').trim();
+                        return (
+                          <blockquote className="text-[17px] md:text-[19px] font-bold text-slate-900 leading-[1.3] text-right font-display">
+                            <span className="text-[#155EE7]">”</span>
+                            {cleanQuote}
+                            <span className="text-[#155EE7]">“</span>
+                          </blockquote>
+                        );
+                      })()}
 
-                      {/* Date (Left under RTL) */}
-                      <div
-                        style={{
-                          fontFamily: 'Alexandria',
-                          fontWeight: 400,
-                          fontStyle: 'normal',
-                          fontSize: '12px',
-                          lineHeight: '150%',
-                          letterSpacing: '0%',
-                          textAlign: 'right'
-                        }}
-                        className="text-slate-400 shrink-0"
-                      >
-                        {stmt.date}
+                      {/* Bottom Column Container: Author and Description */}
+                      <div className="flex flex-col justify-start mt-2.5">
+                        {/* Author Subtitle right-aligned */}
+                        <div className="text-right text-[13px] sm:text-[14px] text-slate-950 font-semibold">
+                          {stmt.author}، {stmt.role}
+                        </div>
+ 
+                        {/* Paragraph Statement Analysis Snippet */}
+                        <div className="w-full mt-2">
+                          {(() => {
+                            const match = stmt.description.match(/(.*?)(?:\.{2,}\s*المزيد)$/);
+                            if (match) {
+                              const textPart = match[1];
+                              return (
+                                <p className="text-[14px] text-slate-500 leading-[1.4] text-right font-['Alexandria'] font-normal">
+                                  {textPart}
+                                  <span className="text-[#155EE7] hover:underline font-semibold cursor-pointer">...المزيد</span>
+                                </p>
+                              );
+                            }
+                            return (
+                              <p className="text-[14px] text-slate-500 leading-[1.4] text-right font-['Alexandria'] font-normal">
+                                {stmt.description}
+                              </p>
+                            );
+                          })()}
+                        </div>
                       </div>
                     </div>
 
-                    {/* Bold Quote right-aligned */}
-                    {(() => {
-                      const cleanQuote = stmt.quote.replace(/[“""”]/g, '').trim();
-                      return (
-                        <blockquote className="text-[19px] sm:text-[22px] font-bold text-slate-900 leading-[1.4] text-right font-display">
-                          <span className="text-[#155EE7]">”</span>
-                          {cleanQuote}
-                          <span className="text-[#155EE7]">“</span>
-                        </blockquote>
-                      );
-                    })()}
-
-                    {/* Author Subtitle right-aligned */}
-                    <div className="text-right text-[13px] sm:text-[14px] text-slate-950 font-semibold mt-2">
-                      {stmt.author}، {stmt.role}
-                    </div>
-
-                    {/* Paragraph Statement Analysis Snippet (aligned right under the author) */}
-                    <div className="w-full mt-4">
-                      {(() => {
-                        const match = stmt.description.match(/(.*?)(?:\.{2,}\s*المزيد)$/);
-                        if (match) {
-                          const textPart = match[1];
-                          return (
-                            <p className="text-[14px] text-slate-500 leading-[1.4] text-right font-['Alexandria'] font-normal">
-                              {textPart}
-                              <span className="text-[#155EE7] hover:underline font-semibold cursor-pointer">...المزيد</span>
-                            </p>
-                          );
-                        }
-                        return (
-                          <p className="text-[14px] text-slate-500 leading-[1.4] text-right font-['Alexandria'] font-normal">
-                            {stmt.description}
-                          </p>
-                        );
-                      })()}
-                    </div>
                   </div>
-
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
-
         </div>
-
+ 
       </div>
-
+ 
     </section>
   );
 }
-
