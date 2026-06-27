@@ -9,11 +9,13 @@ html {
   font-size: 110% !important;
 }
 
-*:not(#statement-slider-next-arrow):not(#statement-slider-prev-arrow):not(.fact-check-badge), ::-webkit-scrollbar-thumb {
+*:not(#statement-slider-next-arrow):not(#statement-slider-prev-arrow):not(.fact-check-badge),
+::-webkit-scrollbar-thumb {
   border-radius: 0px !important;
 }
 
-#statement-slider-next-arrow, #statement-slider-prev-arrow {
+#statement-slider-next-arrow,
+#statement-slider-prev-arrow {
   border-radius: 50% !important;
 }
 
@@ -80,7 +82,7 @@ header,
 /* Navigation Link Modern Underline Animation */
 .nav-link {
   position: relative;
-  transition: color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .nav-link::after {
@@ -90,7 +92,7 @@ header,
   left: 0;
   width: 100%;
   height: 2.5px;
-  background-color: #db2777;
+  background-color: #155EE7;
   /* Tailwind pink-600 */
   border-radius: 9999px;
   transform: scaleX(0);
@@ -140,7 +142,11 @@ header,
 }
 
 .fact-check-badge-row--sm .fact-check-badge--verdict-wide {
-  width: 72px;
+  width: 74px;
+}
+
+.fact-check-badge-row--sm .fact-check-badge--verdict-unexplained {
+  width: 81px;
 }
 
 .fact-check-badge-row--md .fact-check-badge {
@@ -284,6 +290,7 @@ header,
     border-style: none !important;
     position: relative;
   }
+
   .md\:border-l.md\:border-dotted::after {
     content: "";
     position: absolute;
@@ -296,6 +303,7 @@ header,
     background-repeat: repeat-y;
     pointer-events: none;
   }
+
   .md\:border-b.md\:border-dotted::after {
     content: "";
     position: absolute;
@@ -308,6 +316,7 @@ header,
     background-repeat: repeat-x;
     pointer-events: none;
   }
+
   .md\:border-b-0::after,
   .md\:border-l-0::after {
     display: none !important;
@@ -319,6 +328,7 @@ header,
     border-style: none !important;
     position: relative;
   }
+
   .lg\:border-l.lg\:border-dotted::after {
     content: "";
     position: absolute;
@@ -331,6 +341,7 @@ header,
     background-repeat: repeat-y;
     pointer-events: none;
   }
+
   .lg\:border-b-0::after,
   .lg\:border-l-0::after {
     display: none !important;

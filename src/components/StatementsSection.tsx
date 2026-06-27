@@ -17,11 +17,16 @@ export default function StatementsSection({ onArticleClick }: StatementsSectionP
   const [jobFilter, setJobFilter] = useState('الوظيفة');
   const [startIndex, setStartIndex] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
+  const containerRef = React.useRef<HTMLDivElement>(null);
+  const [containerWidth, setContainerWidth] = useState(1096);
 
   // Responsive device width tracking for mathematically perfect translation
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth < 768);
+      if (containerRef.current) {
+        setContainerWidth(containerRef.current.clientWidth);
+      }
     };
     handleResize();
     window.addEventListener('resize', handleResize);
@@ -51,7 +56,7 @@ export default function StatementsSection({ onArticleClick }: StatementsSectionP
       roleCategory: 'إعلامي',
       date: 'سبتمبر ٢٠٢٥',
       avatar: '/images-sec-2/84fcf0e9f519808e8fffeb9bf115950cb3170574.jpg',
-      description: 'إن الديون الخارجية للحكومة انخفضت بقيمة ٤ مليارات دولار خلال عامين، وليس إجمالي الدين الخارجي لمصر كما قال شريف... المزيد',
+      description: 'إن الديون الخارجية للحكومة انخفضت بقيمة ٤ مليارات دولار خلال عامين، كما قال شريف... المزيد',
     },
     {
       id: 'stmt_3',
@@ -95,7 +100,14 @@ export default function StatementsSection({ onArticleClick }: StatementsSectionP
 
   // Calculate sliding constraints
   const totalItems = filteredStatements.length;
-  const maxIndex = Math.max(0, isMobile ? totalItems - 1 : totalItems - 2);
+  const maxIndex = Math.max(0, isMobile ? totalItems - 1 : totalItems - 3);
+
+  const cardWidth = 380;
+  const gap = 18;
+  const totalContentWidth = totalItems * cardWidth + (totalItems - 1) * gap;
+  const maxScroll = Math.max(0, totalContentWidth - containerWidth);
+
+  const showLeftArrow = startIndex < maxIndex;
 
   // Automatically adjust startIndex if container size or filter changes
   useEffect(() => {
@@ -130,16 +142,16 @@ export default function StatementsSection({ onArticleClick }: StatementsSectionP
         {/* Title on the far right (RTL flow) */}
         <div className="flex items-center gap-2 select-none">
           <span className="w-3.5 h-3.5 bg-[#155EE7] rounded-[3px]" id="title-accent-statements"></span>
-          <h2 
-            style={{ 
-              fontFamily: 'Alexandria', 
-              fontWeight: 500, 
-              fontStyle: 'Medium', 
-              fontSize: '18px', 
-              lineHeight: '160%', 
-              letterSpacing: '0%', 
-              textAlign: 'right', 
-              color: '#0f172a' 
+          <h2
+            style={{
+              fontFamily: 'Alexandria',
+              fontWeight: 500,
+              fontStyle: 'Medium',
+              fontSize: '18px',
+              lineHeight: '160%',
+              letterSpacing: '0%',
+              textAlign: 'right',
+              color: '#0f172a'
             }}
           >تصريحات</h2>
         </div>
@@ -210,7 +222,7 @@ export default function StatementsSection({ onArticleClick }: StatementsSectionP
 
         {/* Dynamic Carousel Arrow buttons overlapping container elegantly */}
         {/* Left Arrow (Moves Left, towards index 3 on desktop-RTL) — overlaps the blue border */}
-        {startIndex < maxIndex && (
+        {showLeftArrow && (
           <div className="absolute z-20 top-1/2 -translate-y-1/2" style={{ left: '-18px' }}>
             <button
               onClick={handleNextSlide}
@@ -238,38 +250,47 @@ export default function StatementsSection({ onArticleClick }: StatementsSectionP
         )}
 
         {/* Overflow hidden sliding stage — bordered container */}
-        <div 
+        <div
           className="w-full border border-[#155EE7] relative md:max-w-[1440px] mx-auto"
           style={{
             paddingTop: '40px',
             paddingRight: '60px',
             paddingBottom: '32px',
             paddingLeft: '60px',
+            backgroundColor: '#f5f9ff',
           }}
         >
           {/* Inner overflow-hidden container to clip cards exactly at the padding edge */}
-          <div className="overflow-hidden w-full relative">
+          <div ref={containerRef} className="overflow-hidden w-full relative">
 
             {/* Left-side Gradient Fade Overlay to show scrollability (desktop only) */}
-            <div className="hidden md:block absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-[#f4f7f9] to-transparent pointer-events-none z-10"></div>
+            {showLeftArrow && (
+              <div className="hidden md:block absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-[#f5f9ff] to-transparent pointer-events-none z-10"></div>
+            )}
 
             <div
               className="flex transition-transform duration-500 ease-in-out gap-0 md:gap-[18px] w-full items-start"
               style={{
+                paddingLeft: isMobile ? '0px' : '18px',
                 transform: isMobile
                   ? `translateX(${startIndex * 100}%)`
-                  : `translateX(${startIndex * 424}px)`
+                  : `translateX(${startIndex === maxIndex ? maxScroll : startIndex * 398}px)`
               }}
             >
-              {filteredStatements.map((stmt) => (
+              {filteredStatements.map((stmt, index) => (
                 <div
                   key={stmt.id}
-                  className="w-full md:w-[406px] shrink-0 px-2.5 md:px-0 flex flex-col"
+                  className="w-full md:w-[380px] shrink-0 px-2.5 md:px-0 flex flex-col"
+                  style={{
+                    opacity: index < startIndex ? 0 : 1,
+                    visibility: index < startIndex ? 'hidden' : 'visible',
+                    transition: 'opacity 0.3s ease-in-out, visibility 0.3s ease-in-out'
+                  }}
                   id={`statement-wrapper-${stmt.id}`}
                 >
                   <div
                     onClick={() => handleCardClick(stmt.quote, stmt.author, stmt.description, stmt.verdict, stmt.avatar)}
-                    className="relative bg-[#f4f7f9] rounded-2xl p-6 md:p-[24px] md:w-[406px] md:h-[287px] box-border cursor-pointer shadow-2xs flex flex-col justify-start select-none"
+                    className="relative bg-white rounded-2xl p-6 md:p-[24px] md:w-[380px] md:h-[287px] box-border cursor-pointer shadow-2xs flex flex-col justify-start select-none border border-slate-100"
                     dir="rtl"
                     id={`statement-card-${stmt.id}`}
                   >
@@ -286,27 +307,29 @@ export default function StatementsSection({ onArticleClick }: StatementsSectionP
                     {/* Left Column Container: Date, Badge, Quote (with right-padding to clear the absolute-positioned avatar) */}
                     <div className="pr-[72px] sm:pr-[88px] flex flex-col justify-start">
                       {/* Top Row: Date on the far left, Badge on the right next to the avatar */}
-                      <div className="flex items-center justify-between w-full mb-3">
+                      <div className="flex items-start justify-between w-full mb-3">
                         {/* Badge (Right under RTL) */}
                         <FactCheckBadgeRow categoryLabel="تصريح" verdictLabel={stmt.verdict} size="md" />
- 
+
                         {/* Date (Left under RTL) */}
                         <div
                           style={{
+                            color: 'var(--neutral-300, #565A63)',
                             fontFamily: 'Alexandria',
                             fontWeight: 400,
                             fontStyle: 'normal',
                             fontSize: '12px',
                             lineHeight: '150%',
                             letterSpacing: '0%',
-                            textAlign: 'right'
+                            textAlign: 'right',
+                            marginTop: '-3px'
                           }}
-                          className="text-slate-400 shrink-0"
+                          className="shrink-0"
                         >
                           {stmt.date}
                         </div>
                       </div>
- 
+
                       {/* Bold Quote right-aligned */}
                       {(() => {
                         const cleanQuote = stmt.quote.replace(/[“""”]/g, '').trim();
@@ -325,7 +348,7 @@ export default function StatementsSection({ onArticleClick }: StatementsSectionP
                         <div className="text-right text-[13px] sm:text-[14px] text-slate-950 font-semibold">
                           {stmt.author}، {stmt.role}
                         </div>
- 
+
                         {/* Paragraph Statement Analysis Snippet */}
                         <div className="w-full mt-2">
                           {(() => {
@@ -355,9 +378,9 @@ export default function StatementsSection({ onArticleClick }: StatementsSectionP
             </div>
           </div>
         </div>
- 
+
       </div>
- 
+
     </section>
   );
 }

@@ -57,10 +57,15 @@ export default function FactCheckBadgeRow({
 }: FactCheckBadgeRowProps) {
   const sizeClass = 'fact-check-badge-row--sm';
 
-  const isWideVerdict = verdictLabel === 'غير دقيق' || verdictLabel === 'غير موضح';
-  const verdictClass = isWideVerdict
-    ? 'fact-check-badge--verdict fact-check-badge--verdict-wide'
-    : 'fact-check-badge--verdict';
+  const isUnexplained = verdictLabel === 'غير موضح';
+  const isWideVerdict = verdictLabel === 'غير دقيق';
+  
+  let verdictClass = 'fact-check-badge--verdict';
+  if (isUnexplained) {
+    verdictClass += ' fact-check-badge--verdict-unexplained';
+  } else if (isWideVerdict) {
+    verdictClass += ' fact-check-badge--verdict-wide';
+  }
  
   return (
     <div className={`fact-check-badge-row ${sizeClass}`} dir="rtl">

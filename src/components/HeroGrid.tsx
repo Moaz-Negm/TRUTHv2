@@ -24,10 +24,9 @@ export default function HeroGrid({ articles, onArticleClick }: HeroGridProps) {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start" id="hero-layout-grid" dir="rtl">
 
-      {/* RIGHT COLUMN (Featured Article): Occupies 7 cols on desktop (approx 60% split) */}
       <div
         onClick={() => onArticleClick(mainFeatured)}
-        className="lg:col-span-7 min-w-0 flex flex-col group cursor-pointer border border-slate-100 bg-[#f4f7f9] rounded-2xl overflow-hidden shadow-xs p-5"
+        className="lg:col-span-7 min-w-0 flex flex-col group cursor-pointer border border-slate-100 bg-[#f5f9ff] rounded-2xl overflow-hidden p-5"
         id="right-column-featured"
       >
         {/* Large high-impact header Image */}
@@ -59,11 +58,10 @@ export default function HeroGrid({ articles, onArticleClick }: HeroGridProps) {
           {mainFeatured.snippet}
         </p>
 
-
       </div>
 
       {/* LEFT COLUMN (List of exactly 3 Articles): Occupies 5 cols on desktop (approx 40% split) */}
-      <div className="lg:col-span-5 min-w-0 flex flex-col gap-5 lg:pt-[17px]" id="left-column-list">
+      <div className="lg:col-span-5 min-w-0 flex flex-col gap-5 lg:pt-[11px]" id="left-column-list">
         {leftArticles.map((article, index) => {
           const isJapan = article.id === '3';
           const isEsca = article.id === '4';

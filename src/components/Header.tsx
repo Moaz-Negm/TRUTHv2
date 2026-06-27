@@ -49,19 +49,19 @@ export default function Header({
   const borderColor = 'border-[#9BBBF5]';
 
   return (
-    <header className="bg-white" id="main-header" dir="rtl">
+    <header className="#f5f9ff" id="main-header" dir="rtl">
 
       {/* LINE 1: Top border of the header */}
       {/* Top bar row — white background */}
-      <div className={`bg-white border-t ${borderColor}`}>
+      <div className={`bg-[#f5f9ff] border-t ${borderColor}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-14 flex items-center justify-between relative">
 
           {/* Right vertical line (touching top/bottom borders) */}
-          <div className="absolute right-4 sm:right-6 lg:right-8 top-0 bottom-0 w-[1px] bg-[#9BBBF5]" id="logo-vertical-line"></div>
+          <div className="absolute right-4 sm:right-6 lg:right-8 top-0 bottom-0 w-[1px] bg-[#9BBBF5] z-10" id="logo-vertical-line"></div>
 
           {/* Right: Logo */}
           <div
-            className="flex items-center cursor-pointer pr-4"
+            className="flex items-center cursor-pointer pr-4 relative z-10"
             onClick={() => onSelectCategory('الكل')}
             id="logo-container"
           >
@@ -75,7 +75,7 @@ export default function Header({
           </div>
 
           {/* Left: Search icon + Button */}
-          <div className="flex items-center gap-3 pl-4" id="desktop-actions">
+          <div className="flex items-center gap-3 pl-4 relative z-10" id="desktop-actions">
 
             {/* Search: icon only, expands on click — appears on RIGHT in RTL (closer to center) */}
             {searchOpen ? (
@@ -121,7 +121,7 @@ export default function Header({
           </div>
 
           {/* Left vertical line (touching top/bottom borders) */}
-          <div className="absolute left-4 sm:left-6 lg:left-8 top-0 bottom-0 w-[1px] bg-[#9BBBF5]" id="button-vertical-line"></div>
+          <div className="absolute left-4 sm:left-6 lg:left-8 top-0 bottom-0 w-[1px] bg-[#9BBBF5] z-10" id="button-vertical-line"></div>
 
         </div>
       </div>

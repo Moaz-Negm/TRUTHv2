@@ -63,6 +63,9 @@ export default function FakeNewsSection({ onArticleClick }: FakeNewsSectionProps
 
   return (
     <section className="mb-12" id="fakenews-section" dir="rtl">
+      {/* Dotted divider on top of Fake News section */}
+      <div className="border-t border-dotted w-full mb-8" style={{ height: '0px' }}></div>
+
       {/* Accent title for Fake News */}
       <div className="flex items-center gap-2 mb-6 pb-4 border-b border-blue-100">
         <span className="w-3.5 h-3.5 bg-[#155EE7] rounded-[3px]" id="title-accent-fakenews"></span>

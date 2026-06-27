@@ -138,7 +138,7 @@ export default function App() {
       />
 
       {/* 2. Main Platform Stage */}
-      <main className="flex-1 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-8" id="main-content-area">
+      <main className="flex-1 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 pt-8 pb-3" id="main-content-area">
 
         {/* Dynamic Rendering of Panels based on selected view/tab */}
         {activeTab === 'home' ? (
@@ -311,7 +311,7 @@ export default function App() {
       </main>
 
       {/* 3. Footer */}
-      <footer className="bg-[#155EE7] text-white py-10 mt-12" dir="rtl" id="platform-footer">
+      <footer className="bg-[#155EE7] text-white py-10 mt-3" dir="rtl" id="platform-footer">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center gap-5">
 
           {/* White Logo */}
