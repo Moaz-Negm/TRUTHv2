@@ -32,22 +32,27 @@ export default function ReportsSection({ onArticleClick }: ReportsSectionProps) 
   return (
     <section className="mb-12" id="reports-section" dir="rtl">
       {/* Target heading with solid accent bar */}
-      <div className="flex items-center gap-2 mb-6 pb-4 border-b border-blue-100">
-        <span className="w-3.5 h-3.5 bg-[#155EE7] rounded-[3px]" id="title-accent-reports"></span>
-        <h2 
-          style={{ 
-            fontFamily: 'Alexandria', 
-            fontWeight: 500, 
-            fontStyle: 'Medium', 
-            fontSize: '18px', 
-            lineHeight: '160%', 
-            letterSpacing: '0%', 
-            textAlign: 'right', 
-            color: '#0f172a',
-            width: '43px',
-            height: '29px'
-          }}
-        >تقارير</h2>
+      <div className="flex items-center justify-between mb-6 pb-4">
+        <div className="flex items-center gap-2 select-none title-accent-group">
+          <svg className="title-accent-arrow" width="36" height="12" viewBox="0 0 36 12" fill="none" stroke="#155EE7" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ display: 'inline-block' }}><line x1="34" y1="6" x2="2" y2="6"></line><polyline points="8 10 2 6 8 2"></polyline></svg>
+          <div className="flex items-center gap-2 title-accent-content">
+            <span className="w-3.5 h-3.5 bg-[#155EE7] rounded-[3px] title-accent-span" id="title-accent-reports"></span>
+            <h2
+              style={{
+                fontFamily: 'Alexandria',
+                fontWeight: 500,
+                fontStyle: 'Medium',
+                fontSize: '18px',
+                lineHeight: '160%',
+                letterSpacing: '0%',
+                textAlign: 'right',
+                color: '#0f172a',
+                width: '43px',
+                height: '29px'
+              }}
+            >تقارير</h2>
+          </div>
+        </div>
       </div>
 
       {/* Grid of exactly two articles with vertical dotted line separator */}
@@ -56,14 +61,13 @@ export default function ReportsSection({ onArticleClick }: ReportsSectionProps) 
           <div
             key={report.id}
             onClick={() => onArticleClick(report.title, report.category, report.snippet, report.imageUrl)}
-            className={`group flex flex-row gap-4 cursor-pointer items-start ${
-              index === 0 
-                ? 'md:border-l md:border-dotted md:border-blue-200 md:pl-8' 
-                : 'md:pr-8'
-            }`}
+            className={`group flex flex-row gap-4 cursor-pointer items-start ${index === 0
+              ? 'md:border-l md:border-dotted md:border-blue-200 md:pl-8'
+              : 'md:pr-8'
+              }`}
             id={`report-item-${report.id}`}
           >
-            
+
             {/* Right element in RTL: Image with sharp corners (rounded-none) */}
             <div className="w-36 h-24 sm:w-44 sm:h-32 shrink-0 rounded-none overflow-hidden bg-slate-100 shadow-3xs">
               <img
@@ -79,7 +83,7 @@ export default function ReportsSection({ onArticleClick }: ReportsSectionProps) 
               <span className={`block font-['Alexandria'] font-normal text-[14px] leading-[1.4] ${report.categoryColor} mb-2`}>
                 {report.category}
               </span>
-              <h3 
+              <h3
                 style={{
                   fontFamily: 'Alyamama',
                   fontWeight: 500,
@@ -92,7 +96,7 @@ export default function ReportsSection({ onArticleClick }: ReportsSectionProps) 
               >
                 {report.title}
               </h3>
-              <p 
+              <p
                 style={{
                   fontFamily: 'Alexandria',
                   fontWeight: 400,
@@ -111,6 +115,8 @@ export default function ReportsSection({ onArticleClick }: ReportsSectionProps) 
         ))}
       </div>
 
+      {/* Dotted border separator under the reports section */}
+      <div className="border-t border-dotted border-blue-200 w-full mt-5" style={{ height: '0px' }}></div>
     </section>
   );
 }

@@ -64,23 +64,28 @@ export default function FakeNewsSection({ onArticleClick }: FakeNewsSectionProps
   return (
     <section className="mb-12" id="fakenews-section" dir="rtl">
       {/* Dotted divider on top of Fake News section */}
-      <div className="border-t border-dotted w-full mb-8" style={{ height: '0px' }}></div>
+
 
       {/* Accent title for Fake News */}
-      <div className="flex items-center gap-2 mb-6 pb-4 border-b border-blue-100">
-        <span className="w-3.5 h-3.5 bg-[#155EE7] rounded-[3px]" id="title-accent-fakenews"></span>
-        <h2 
-          style={{ 
-            fontFamily: 'Alexandria', 
-            fontWeight: 500, 
-            fontStyle: 'Medium', 
-            fontSize: '18px', 
-            lineHeight: '160%', 
-            letterSpacing: '0%', 
-            textAlign: 'right', 
-            color: '#0f172a' 
-          }}
-        >أخبار كاذبة</h2>
+      <div className="flex items-center justify-between mb-6 pb-4">
+        <div className="flex items-center gap-2 select-none title-accent-group">
+          <svg className="title-accent-arrow" width="36" height="12" viewBox="0 0 36 12" fill="none" stroke="#155EE7" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ display: 'inline-block' }}><line x1="34" y1="6" x2="2" y2="6"></line><polyline points="8 10 2 6 8 2"></polyline></svg>
+          <div className="flex items-center gap-2 title-accent-content">
+            <span className="w-3.5 h-3.5 bg-[#155EE7] rounded-[3px] title-accent-span" id="title-accent-fakenews"></span>
+            <h2
+              style={{
+                fontFamily: 'Alexandria',
+                fontWeight: 500,
+                fontStyle: 'Medium',
+                fontSize: '18px',
+                lineHeight: '160%',
+                letterSpacing: '0%',
+                textAlign: 'right',
+                color: '#0f172a'
+              }}
+            >أخبار كاذبة</h2>
+          </div>
+        </div>
       </div>
 
       {/* Grid structure: 2 Columns, 2 Rows with dotted dividers */}
@@ -94,59 +99,59 @@ export default function FakeNewsSection({ onArticleClick }: FakeNewsSectionProps
               id={`fakenews-item-${news.id}`}
             >
 
-            {/* Right Box in RTL: Thumbnail Image with sharp corners (rounded-none) */}
-            <div className="w-36 h-24 sm:w-44 sm:h-32 shrink-0 rounded-none overflow-hidden bg-slate-100 shadow-3xs">
-              <img
-                src={news.imageUrl}
-                alt={news.title}
-                referrerPolicy="no-referrer"
-                className="w-full h-full object-cover"
-              />
-            </div>
-
-            {/* Left Box in RTL: Badge & Content */}
-            <div className="flex-1 text-right pr-4">
-
-              {/* Badges */}
-              <div className="mb-2">
-                <FactCheckBadgeRow categoryLabel={news.badgeLeft} verdictLabel={news.badgeRight} size="sm" />
+              {/* Right Box in RTL: Thumbnail Image with sharp corners (rounded-none) */}
+              <div className="w-36 h-24 sm:w-44 sm:h-32 shrink-0 rounded-none overflow-hidden bg-slate-100 shadow-3xs">
+                <img
+                  src={news.imageUrl}
+                  alt={news.title}
+                  referrerPolicy="no-referrer"
+                  className="w-full h-full object-cover"
+                />
               </div>
 
-              <h3 
-                style={{
-                  fontFamily: 'Alyamama',
-                  fontWeight: 500,
-                  fontSize: '22px',
-                  lineHeight: '130%',
-                  letterSpacing: '0%',
-                  textAlign: 'right'
-                }}
-                className="text-slate-900 mb-2 group-active:text-[#155EE7] transition-colors"
-              >
-                {news.title}
-              </h3>
-              <p 
-                style={{
-                  fontFamily: 'Alexandria',
-                  fontWeight: 400,
-                  fontSize: '14px',
-                  lineHeight: '140%',
-                  letterSpacing: '0%',
-                  textAlign: 'right'
-                }}
-                className="text-slate-500 line-clamp-3"
-              >
-                {news.snippet}
-              </p>
-            </div>
+              {/* Left Box in RTL: Badge & Content */}
+              <div className="flex-1 text-right pr-4">
 
-            {/* Vertical dotted divider between columns (with gaps around horizontal line) */}
-            {index === 0 && (
-              <div className="hidden md:block absolute left-0 top-0 bottom-3 border-l border-dotted border-blue-200" id="fakenews-vertical-divider-top"></div>
-            )}
-            {index === 2 && (
-              <div className="hidden md:block absolute left-0 top-3 bottom-0 border-l border-dotted border-blue-200" id="fakenews-vertical-divider-bottom"></div>
-            )}
+                {/* Badges */}
+                <div className="mb-2">
+                  <FactCheckBadgeRow categoryLabel={news.badgeLeft} verdictLabel={news.badgeRight} size="sm" />
+                </div>
+
+                <h3
+                  style={{
+                    fontFamily: 'Alyamama',
+                    fontWeight: 500,
+                    fontSize: '22px',
+                    lineHeight: '130%',
+                    letterSpacing: '0%',
+                    textAlign: 'right'
+                  }}
+                  className="text-slate-900 mb-2 group-active:text-[#155EE7] transition-colors"
+                >
+                  {news.title}
+                </h3>
+                <p
+                  style={{
+                    fontFamily: 'Alexandria',
+                    fontWeight: 400,
+                    fontSize: '14px',
+                    lineHeight: '140%',
+                    letterSpacing: '0%',
+                    textAlign: 'right'
+                  }}
+                  className="text-slate-500 line-clamp-3"
+                >
+                  {news.snippet}
+                </p>
+              </div>
+
+              {/* Vertical dotted divider between columns (with gaps around horizontal line) */}
+              {index === 0 && (
+                <div className="hidden md:block absolute left-0 top-0 bottom-3 border-l border-dotted border-blue-200" style={{ position: 'absolute' }} id="fakenews-vertical-divider-top"></div>
+              )}
+              {index === 2 && (
+                <div className="hidden md:block absolute left-0 top-3 bottom-0 border-l border-dotted border-blue-200" style={{ position: 'absolute' }} id="fakenews-vertical-divider-bottom"></div>
+              )}
 
             </div>
           );

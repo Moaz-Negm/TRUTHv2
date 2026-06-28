@@ -21,9 +21,19 @@ html {
 
 body {
   font-family: var(--font-sans);
-  background-color: #f4f7f9;
+  background-color: #f5f9ff;
   color: #1e293b;
   overflow-x: hidden;
+}
+
+::selection {
+  background-color: #155EE7;
+  color: #ffffff;
+}
+
+::-moz-selection {
+  background-color: #155EE7;
+  color: #ffffff;
 }
 
 h1,
@@ -91,7 +101,7 @@ header,
   bottom: -2px;
   left: 0;
   width: 100%;
-  height: 2.5px;
+  height: 2px;
   background-color: #155EE7;
   /* Tailwind pink-600 */
   border-radius: 9999px;
@@ -346,4 +356,80 @@ header,
   .lg\:border-l-0::after {
     display: none !important;
   }
+}
+
+/* Category Section Title Accent Hover Animation */
+.title-accent-group {
+  cursor: pointer;
+  display: inline-flex !important;
+  align-items: center;
+  position: relative;
+}
+
+.title-accent-content {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.title-accent-arrow {
+  opacity: 0;
+  width: 36px;
+  height: 12px;
+  transform: translateX(20px);
+  margin-left: -4px;
+  margin-right: -36px;
+  /* Offset width so it does not push layout while hidden */
+  transition: opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+    margin-right 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+    margin-left 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.title-accent-group:hover .title-accent-arrow {
+  opacity: 1;
+  transform: translateX(0);
+  margin-right: 0px;
+  /* Pulls more to the left to push content */
+  margin-left: -12px;
+  /* Overrides flex gap to bring arrow closer to the square */
+}
+
+
+.title-accent-group:hover .title-accent-content {
+  transform: translateX(-8px);
+}
+
+.modal-description-text {
+  font-family: "Alexandria", sans-serif !important;
+  font-weight: 400 !important;
+  font-style: normal !important;
+  font-size: 14px !important;
+  leading-trim: none !important;
+  line-height: 140% !important;
+  letter-spacing: 0% !important;
+  text-align: right !important;
+  color: #64748b !important;
+}
+
+#claim-submission-modal h3,
+#claim-submission-modal h3 span,
+#claim-submission-modal p,
+#claim-submission-modal strong,
+#claim-submission-modal label,
+#claim-submission-modal input,
+#claim-submission-modal textarea,
+#claim-submission-modal select,
+#claim-submission-modal button,
+#claim-submission-modal button span,
+#claim-submission-modal input::placeholder,
+#claim-submission-modal textarea::placeholder {
+  font-family: "Alexandria", sans-serif !important;
+  font-weight: 400 !important;
+  font-size: 14px !important;
+  leading-trim: none !important;
+  line-height: 140% !important;
+  letter-spacing: 0% !important;
+  text-align: right !important;
 }

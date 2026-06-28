@@ -150,7 +150,7 @@ export const INITIAL_ARTICLES: Article[] = [
     category: 'أخبار كاذبة',
     verdict: 'incorrect',
     verdictLabel: 'زائف',
-    imageUrl: '/images/5-2.jpg', // School children or empty classroom
+    imageUrl: '/images-sec-5/5-2.jpg', // School children or empty classroom
     date: '9 يونيو 2026',
     author: 'أحمد فؤاد',
     views: 5120,

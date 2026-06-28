@@ -137,8 +137,8 @@ export default function Header({
                   key={cat}
                   onClick={() => onSelectCategory(cat)}
                   className={`py-1 text-sm font-semibold cursor-pointer nav-link ${isSelected
-                    ? 'text-pink-600 font-bold nav-link-active'
-                    : 'text-slate-800 hover:text-pink-600'
+                    ? 'text-[#155EE7] font-bold nav-link-active'
+                    : 'text-slate-800 hover:text-[#155EE7]'
                     }`}
                 >
                   {cat}

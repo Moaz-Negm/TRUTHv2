@@ -79,7 +79,7 @@ export default function ClaimSubmissionModal({ onClose, onSubmit }: ClaimSubmiss
           /* Form layout */
           <form onSubmit={handleSubmit} className="p-6 space-y-4">
 
-            <p className="text-sm text-slate-500 leading-relaxed mb-4">
+            <p className="modal-description-text mb-4">
               هل لاحظت شائعة على فيسبوك، أو تصريحاً تلفزيونياً تشك في دقته؟ أرسله لنا وسيقوم فريق المترجمين والمدققين في
               منصة <strong className="text-slate-800">صحيح مصر</strong> بالبحث ورفع الحقيقة فوراً.
             </p>

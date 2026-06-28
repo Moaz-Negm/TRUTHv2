@@ -137,23 +137,26 @@ export default function StatementsSection({ onArticleClick }: StatementsSectionP
     <section className="mb-12" id="statements-section" dir="rtl">
 
       {/* Header & Filters row matching the screenshot exactly */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6 pb-4 border-b border-blue-50">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6 pb-4">
 
         {/* Title on the far right (RTL flow) */}
-        <div className="flex items-center gap-2 select-none">
-          <span className="w-3.5 h-3.5 bg-[#155EE7] rounded-[3px]" id="title-accent-statements"></span>
-          <h2
-            style={{
-              fontFamily: 'Alexandria',
-              fontWeight: 500,
-              fontStyle: 'Medium',
-              fontSize: '18px',
-              lineHeight: '160%',
-              letterSpacing: '0%',
-              textAlign: 'right',
-              color: '#0f172a'
-            }}
-          >تصريحات</h2>
+        <div className="flex items-center gap-2 select-none title-accent-group">
+          <svg className="title-accent-arrow" width="36" height="12" viewBox="0 0 36 12" fill="none" stroke="#155EE7" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ display: 'inline-block' }}><line x1="34" y1="6" x2="2" y2="6"></line><polyline points="8 10 2 6 8 2"></polyline></svg>
+          <div className="flex items-center gap-2 title-accent-content">
+            <span className="w-3.5 h-3.5 bg-[#155EE7] rounded-[3px] title-accent-span" id="title-accent-statements"></span>
+            <h2
+              style={{
+                fontFamily: 'Alexandria',
+                fontWeight: 500,
+                fontStyle: 'Medium',
+                fontSize: '18px',
+                lineHeight: '160%',
+                letterSpacing: '0%',
+                textAlign: 'right',
+                color: '#0f172a'
+              }}
+            >تصريحات</h2>
+          </div>
         </div>
 
         {/* Filters and Inputs on the left (RTL flow) */}
@@ -345,7 +348,18 @@ export default function StatementsSection({ onArticleClick }: StatementsSectionP
                       {/* Bottom Column Container: Author and Description */}
                       <div className="flex flex-col justify-start mt-2.5">
                         {/* Author Subtitle right-aligned */}
-                        <div className="text-right text-[13px] sm:text-[14px] text-slate-950 font-semibold">
+                        <div 
+                          style={{
+                            color: 'var(--primary-ink, #070B16)',
+                            fontFamily: 'Alexandria',
+                            fontWeight: 400,
+                            fontStyle: 'normal',
+                            fontSize: '14px',
+                            lineHeight: '140%',
+                            letterSpacing: '0%',
+                            textAlign: 'right'
+                          }}
+                        >
                           {stmt.author}، {stmt.role}
                         </div>
 

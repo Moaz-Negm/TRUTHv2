@@ -22,11 +22,12 @@ export default function HeroGrid({ articles, onArticleClick }: HeroGridProps) {
   const leftArticles = [gemPath, gemJapan, escaRest].filter((a): a is Article => !!a);
 
   return (
+
     <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start" id="hero-layout-grid" dir="rtl">
 
       <div
         onClick={() => onArticleClick(mainFeatured)}
-        className="lg:col-span-7 min-w-0 flex flex-col group cursor-pointer border border-slate-100 bg-[#f5f9ff] rounded-2xl overflow-hidden p-5"
+        className="lg:col-span-7 min-w-0 flex flex-col group cursor-pointer rounded-2xl overflow-hidden p-5"
         id="right-column-featured"
       >
         {/* Large high-impact header Image */}
@@ -61,7 +62,7 @@ export default function HeroGrid({ articles, onArticleClick }: HeroGridProps) {
       </div>
 
       {/* LEFT COLUMN (List of exactly 3 Articles): Occupies 5 cols on desktop (approx 40% split) */}
-      <div className="lg:col-span-5 min-w-0 flex flex-col gap-5 lg:pt-[11px]" id="left-column-list">
+      <div className="lg:col-span-5 min-w-0 flex flex-col gap-5 lg:pt-4" id="left-column-list">
         {leftArticles.map((article, index) => {
           const isJapan = article.id === '3';
           const isEsca = article.id === '4';
@@ -128,10 +129,12 @@ export default function HeroGrid({ articles, onArticleClick }: HeroGridProps) {
                 <div className="my-3 border-t border-dotted border-blue-200 w-full"></div>
               )}
             </div>
+
           );
         })}
       </div>
 
     </div>
+
   );
 }
